@@ -1,11 +1,11 @@
 #!/bin/bash
 
-WORKDIR=/root/test/oc
-OCP_RELEASE=4.11.0-0.okd-2023-01-14-152430
-LOCAL_REGISTRY='bastion.okd4.sye.home:5000'
-LOCAL_REPOSITORY='okd4/release'
-PRODUCT_REPO='openshift'
-LOCAL_SECRET_JSON='/root/test/oc/pull-secret-private.json'
-RELEASE_NAME="okd"
-ARCHITECTURE=x86_64
-REMOVABLE_MEDIA_PATH=/root/test/mirror
+WORKDIR=/DATA/ocp
+export OCP_RELEASE=4.11.43
+export LOCAL_REGISTRY='bastion-happymoney.ocp4.sye.home:5000'
+export LOCAL_REPOSITORY='ocp4/4.11.43'
+export PRODUCT_REPO='openshift-release-dev'
+export LOCAL_SECRET_JSON='/DATA/oc/pull-secret-bundle.json'
+export RELEASE_NAME="ocp-release"
+export ARCHITECTURE=x86_64
+REMOVABLE_MEDIA_PATH=$WORKDIR/mirror
