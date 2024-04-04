@@ -27,6 +27,9 @@ Config bastion server
 ### scripts
 download CLI tools and mirror OCP container image
 1. `env.sh`: Environments for download CLI and mirror OCP container image
+1. `check_ocp_version.sh`: Check OCP version with Channel
 1. `download-cli.sh`: download CLI tools
+1. `download-coreos-iso.sh`: download CoreOS ISO
 1. `mirror-to-file.sh`: mirror OCP container image to file
 1. `file-to-registry.sh`: push OCP container image to registry
+1. `upgrade_cluster.sh`: upgrade OCP cluster use oc command
