@@ -10,7 +10,7 @@ else
 fi
 
 # if OCP
-if [ "$RELEASE_NAME" == "ocp" ]; then
+if [ "$RELEASE_NAME" == "ocp-release" ]; then
 	# get manifest
 	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
         	--from=quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE}-${ARCHITECTURE} \
