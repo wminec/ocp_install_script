@@ -40,3 +40,7 @@ tar xfz $WORKDIR/$OCP_RELEASE/openshift-install-linux-$OCP_RELEASE.tar.gz -C $WO
 rm -rf $WORKDIR/$OCP_RELEASE/README.md
 # copy cli to /usr/local/bin
 cp -av $WORKDIR/$OCP_RELEASE/oc $WORKDIR/$OCP_RELEASE/openshift-install $WORKDIR/$OCP_RELEASE/kubectl /usr/local/bin/
+
+
+# butane
+curl https://mirror.openshift.com/pub/openshift-v4/clients/butane/latest/butane --output butane

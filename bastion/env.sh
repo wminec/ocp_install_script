@@ -8,7 +8,7 @@ CURRENTPATH=$(pwd)
 ## Registry Base Path
 SRC_REGISTRY_BASE=/REG
 ## Registry Domain Name for create Certificate
-SRC_REGISTRY=bastion.okd4.sye.home
+SRC_REGISTRY=bastion.okd4.kcb.home
 ## Registry Authentication Information
 SRC_REGISTRY_ID=admin
 SRC_REGISTRY_PASS=opennaru
