@@ -12,5 +12,5 @@ fi
 
 # Push OCP Cluster Operator Container Image to Registry
 oc image mirror -a ${LOCAL_SECRET_JSON} \
-	--from-dir=${REMOVEABLE_MEDIA_PATH}/mirror "file://openshift/release:${OCP_RELEASE}*" \
+	--from-dir=${REMOVABLE_MEDIA_PATH}/mirror "file://openshift/release:${OCP_RELEASE}*" \
 	${LOCAL_REGISTRY}/${LOCAL_REPOSITORY} 2>&1 | tee file-to-registry-output_${OCP_RELEASE}.txt

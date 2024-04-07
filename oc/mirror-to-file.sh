@@ -33,7 +33,7 @@ elif [ "$RELEASE_NAME" == "okd" ]; then
 		--dry-run 2>&1 | tee mirror-dryrun-output_${OCP_RELEASE}.txt
 	
 	# mirror OCP container image to file
-	oc adm release mirror -a ${LOCAL_SECRET_JSON}
+	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
 		--to-dir=${REMOVABLE_MEDIA_PATH}/mirror \
 		quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE} 2>&1 | tee mirror-to-file-output_${OCP_RELEASE}.txt
 fi
