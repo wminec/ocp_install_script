@@ -10,16 +10,16 @@ else
         exit 1
 fi
 
+openshift-install create manifests --dir=$WORKDIR/install_dir/
+
 # Create install-config.yaml
 files=( template/*.bu )
 
 # 배열 순회하며 파일 확장자 변경 및 변환
+# template/*.bu -> template/*.yaml use butane command
 for file in "${files[@]}"
 do
-  new_file="${file//template/install_dir\/openshift}"
-  new_file="${new_file%.*}.yaml"
-  echo $new_file
-  $OCP_RELEASE/butane "$file" -o "$new_file"
+  $OCP_RELEASE/butane $file -o "${file%%.*}.yaml"
 done
 
 cp -v template/*.yaml install_dir/openshift/

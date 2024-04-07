@@ -16,8 +16,7 @@ done
 
 # CHANNEL.
 ## if OCP. EX) stable-4.11
-## if okd. EX) stable-4
-CHANNEL=stable-4
+CHANNEL=stable-4.11
 
 # if OCP
 if [ "$RELEASE_NAME" == "ocp-release" ]; then
@@ -32,8 +31,7 @@ if [ "$RELEASE_NAME" == "ocp-release" ]; then
 elif [ "$RELEASE_NAME" == "okd" ]; then 
 
 	# print stable versions
-	curl -s https://origin-release.ci.openshift.org/graph?channel=$CHANNEL | jq -r '.nodes[] | "\(.version)"' | sort -V
+	curl -s https://api.github.com/repos/okd-project/okd/releases | jq '.[] | .html_url' | sort -Vr
+	#curl -s https://origin-release.ci.openshift.org/graph?channel=$CHANNEL | jq -r '.nodes[] | "\(.version)"' | sort -V
 
-	## print versions with payload (digest)
-	#curl -s https://api.openshift.com/api/upgrades_info/graph?channel=$CHANNEL | jq '.nodes[] | {version: .version, payload: .payload}'
 fi

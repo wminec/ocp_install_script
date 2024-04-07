@@ -19,14 +19,13 @@ else
 fi
 
 # Create install-config.yaml
-
 if [ ! -f install-config.yaml ]; then
         echo "install-config not found.."
         cp template/install-config.yaml_ori ./install-config.yaml
         echo "you must modify install-config.yaml"
         echo "retry this script!!!"
 
-	exit 1
+	exit 2
 fi
 
 if [ ! -d install_dir ]; then
@@ -34,6 +33,3 @@ if [ ! -d install_dir ]; then
 fi
 
 cp -v install-config.yaml install_dir/
-
-
-openshift-install create manifests --dir=$WORKDIR/install_dir/
