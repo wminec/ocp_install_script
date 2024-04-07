@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ./env.sh
+
 commands=(curl jq)
 
 for cmd in "${commands[@]}"; do

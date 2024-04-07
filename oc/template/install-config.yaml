@@ -1,0 +1,68 @@
+apiVersion: v1
+baseDomain: kcb.home
+compute:
+- hyperthreading: Enabled
+  name: worker
+  replicas: 2
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  replicas: 3
+metadata:
+  name: okd4
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  networkType: OVNKubernetes
+  serviceNetwork:
+  - 172.30.0.0/16
+fips: false
+platform: 
+  none: {}
+pullSecret: '{"auths":{"bastion.okd4.kcb.home:5000":{"auth":"YWRtaW46b3Blbm5hcnU="}}}'
+sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7fMzq373af+k12wxfCtC1B7Ddc/0rU+ddWTHFSxm+F/VO7Y/eKdOLii+vVjRMdMHjAOOI2rYbVK4/mgsRTTsvDjlei4uj2hjbOXIvsNbtVNblihqcUGqjZixdeHjxiGjuB9wcow1NYLXhgvZtJSd+u+ULnNWEAYnMabOoc7rX5sLgbkMcoK64nwzMu6At9FKtPHGVy3nzvNIyp9grYByeZ+iVQmjKxZzfuWLSIqJrJXRalmtneny5xWo4QS8oMOGf4nX8B+hbFOcdK3tT3ubcFyHvghZZcyYpsZK08qa3Q871QX+IqNkne5OBxJq04q4Fytof+rtbZrW/EeP/IA+IXWeWRw3vD0srp/4t31M+4EB34yZCwrMs8VV2dM9a4bnUbePxfjkiBKVMyuITnVbAiiaySG76lVss9JRASkidvS/qdpoC3fAUC3Xtq8q2xfgFrnhZ1uFCmk2ZKz/mYFQzW6O5gtZgIdm5+aFOR2K5Z1EACeZU9MgjFWrnRUcQErfsu5kC2srckIT822GzFrQfbMYyT4iENsDitKuJxiytnx5VRsbzNcIACHL7FBf7rP76HAaY6w4pUzkUWfpW+Yz20NEhuhIyjXj7l/dCYIIL6W+kdHqevC9nNFBy/8e88BSqFSBIugIcsFSXsy3pPP7J0uCKWAcDGpwTqlprzjam+Q== root@bastion.okd4.kcb.home'
+additionalTrustBundle: |
+  -----BEGIN CERTIFICATE-----
+  MIIGNTCCBB2gAwIBAgIUBbvpZUjMi8f7XW3LcwCIX86z/zgwDQYJKoZIhvcNAQEL
+  BQAwgZgxCzAJBgNVBAYTAktPMQ4wDAYDVQQIDAVTZW91bDEOMAwGA1UEBwwFU2Vv
+  dWwxETAPBgNVBAoMCE9QRU5OQVJVMREwDwYDVQQLDAhPUEVOTkFSVTEeMBwGA1UE
+  AwwVYmFzdGlvbi5va2Q0LmtjYi5ob21lMSMwIQYJKoZIhvcNAQkBFhRzdXBwb3J0
+  QG9wZW5uYXJ1LmNvbTAeFw0yNDA0MDYwNjAzNTVaFw0zNDA0MDQwNjAzNTVaMIGY
+  MQswCQYDVQQGEwJLTzEOMAwGA1UECAwFU2VvdWwxDjAMBgNVBAcMBVNlb3VsMREw
+  DwYDVQQKDAhPUEVOTkFSVTERMA8GA1UECwwIT1BFTk5BUlUxHjAcBgNVBAMMFWJh
+  c3Rpb24ub2tkNC5rY2IuaG9tZTEjMCEGCSqGSIb3DQEJARYUc3VwcG9ydEBvcGVu
+  bmFydS5jb20wggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQDC4G3UE3eF
+  yirT1narS9JY0OzAglY4cZpVB5LiPFel/Wc0oO25hCpIiOycW9+gwVn0S5IpqsEg
+  92q3GK0Fvfy2sykyHcFh3J6RHpnBQkDWXBbPmwhWgGZevektSseo6sYZCQBhoTeW
+  dJYA6r5u83t5ko/QUhNRNVzOO1PUmkoO31t/E2U+iEA5LoXhS44Y1/nvGPXqT7fc
+  Ng/TIYj+wsBBb/yVspOWdUdfsZlKb74/riqvL5z/hzrPp7wYa85971Bok107MKAJ
+  9MPiX+XW3yrb1S0IzkSqROLBJdN+L8L7R4wfbm5wkhR5Puc+Q4zGWZLtu6YI05S2
+  NZtFCgRGIBJEILX7Z/VT+jt2sslbTOqF+IZCo2t8u/nF8ElsoxlbT5o6Yi7cXU7I
+  GvQYnfShJtE3dysgcNLby1VpUfYYOeRa3UiATo6XPWAjcAx4lVivE3XYu3tCidlT
+  fHoyFU3846pQbodgq9Q9H/1+FhkTo6keyeAN+zYvwJXrFdbDmEljcgtSZSKpjgx+
+  hxygyMLe7slu0PYYMhT+X1Lxyl/un4/t4nNtMxIfu+J4A+lqEYs/T8xhrGPdkvRr
+  mZk2BQqnxZAWucDPPR4NPClaAo0JGapF3pdb9mNSxAlaMxQRD3wTtZoHLo66hrJ2
+  NphW6VhdvCBMYDS/oKuVUOfniXSv5tLkLwIDAQABo3UwczAdBgNVHQ4EFgQU2HCi
+  7amvVKkAy84I4cOhN4tdeIAwHwYDVR0jBBgwFoAU2HCi7amvVKkAy84I4cOhN4td
+  eIAwDwYDVR0TAQH/BAUwAwEB/zAgBgNVHREEGTAXghViYXN0aW9uLm9rZDQua2Ni
+  LmhvbWUwDQYJKoZIhvcNAQELBQADggIBAACMoLYpSNaWzpxELxLE0YLvzQb/1UJg
+  E5hhS2KAIjHkPqH5F55Ld2KpC1M1ouVhyq1ffqddsjAkX8NpUtix4mJx9Q9hyj6h
+  oTmKSflXAF6nQ7nxdfuhcvYMsUWhnzzKFpLY02weHen/oQ1TBPIc3TtaulGsG01X
+  SOZCG3HYRo/Jfplwc+VPlFZoe2tenEa/5xg3t87GQgGYCcyWbMIwYvZfEgsMXw6S
+  MQ38uNlC4SZJpW8nu+o9XS8q+SiS5HXlNj7BNFIFfTZi6fvVkN15Rbqt1hx3QuwI
+  wlsWDATN8SOPed9ivQqRCDw6biwfaZr5AuHpRp6AlkhrTLv38XxOIa5kzwKxkEMB
+  GZbhmqWRGJ8UpDGK90NGsAB70Q0uCABkMY61/Px5LOH902KD3fU5PRTOtQUlJqb/
+  vhU/5GAIP76BzBZ0E607XWiYodhyzn3PX2gyhObk0+n5fG1xtUyteXu3Muc8muQ1
+  e0sWnYDbBXc4Mq599RdjDifmQwokmbEMrfbJmJX5s/MnSaVkkQ9pt2h+2rQ+7be1
+  zyXys8fjIRUcgz93erkWUhzjJ6NBsfy075+RI7cTeUYYt2WwsWM08z2miXiQVGp0
+  6dA+b7dJvgLABG9pradkkwpmDI4KBRQ9paBFHdv9PLz6cVBMhlhjT16S2I5eWOte
+  X3APhND+r+kL
+  -----END CERTIFICATE-----
+imageContentSources:
+- mirrors:
+  - bastion.okd4.kcb.home:5000/okd4/release
+  source: quay.io/openshift/okd
+- mirrors:
+  - bastion.okd4.kcb.home:5000/okd4/release
+  source: quay.io/openshift/okd-content
