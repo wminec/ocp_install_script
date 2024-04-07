@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Environment for package check
-packages=(httpd-tools podman openssl haproxy bind bind-utils)
+packages=(httpd httpd-tools podman openssl haproxy bind bind-utils)
 
 # Environment for registry
 CURRENTPATH=$(pwd)
