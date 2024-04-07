@@ -7,18 +7,33 @@ cp -av "$dns_conf_filename" "${dns_conf_filename}_$(date +"%Y%m%d-%H%M%S")"
 cp -av "$dns_rfc1912_zone_filename" "${dns_rfc1912_zone_filename}_$(date +"%Y%m%d-%H%M%S")"
 
 # config named.conf
+echo "Bind IP and allow quary to any."
 sed -i 's/listen-on port 53 { 127.0.0.1; };/listen-on port 53 { any; };/g' $dns_conf_filename
-sed -i 's/allow-query     { localhost; };/allow-query     { any; };/g' $dns_conf_filename
-sed -i "/^\s*recursion yes;/a\        forwarders { $upstream; };" $dns_conf_filename
+sed -i 's/allow-query     { lo¤¸calhost; };/allow-query     { any; };/g' $dns_conf_filename
+
+
+if ! grep -qw "forwarders" "$dns_conf_filename" && grep -q "$upstream" "$dns_conf_filename"; then
+  echo "forwarders not found. add forwarders to $dns_conf_filename"
+  sed -i "/^\s*recursion yes;/a\        forwarders { $upstream; };" "$dns_conf_filename"
+fi
 
 # config named.rfc1912.zones
-cat >> $dns_rfc1912_zone_filename << EOF
+if ! grep -qw "$forward_zonename" "$dns_rfc1912_zone_filename"; then
+  echo "Add $forward_zonename zone to $dns_rfc1912_zone_filename"
+    cat >> $dns_rfc1912_zone_filename << EOF
 
 zone "$forward_zonename" IN {
     type master;
     file "$forward_zonename.zone";
     allow-update { none; };
 };
+EOF
+fi
+
+if ! grep -qw "$rev_zonename" "$dns_rfc1912_zone_filename"; then
+  echo "Add $rev_zonename zone to $dns_rfc1912_zone_filename"
+
+	cat >> $dns_rfc1912_zone_filename << EOF
 
 zone "$rev_zonename" IN {
     type master;
@@ -26,6 +41,7 @@ zone "$rev_zonename" IN {
     allow-update { none; };
 };
 EOF
+fi
 
 # config forward zone file
 cat > $forward_filename << EOF
