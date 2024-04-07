@@ -1,5 +1,5 @@
 apiVersion: v1
-baseDomain: kcb.home
+baseDomain: sye.home
 compute:
 - hyperthreading: Enabled
   name: worker
@@ -20,8 +20,8 @@ networking:
 fips: false
 platform: 
   none: {}
-pullSecret: '{"auths":{"bastion.okd4.kcb.home:5000":{"auth":"YWRtaW46b3Blbm5hcnU="}}}'
-sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7fMzq373af+k12wxfCtC1B7Ddc/0rU+ddWTHFSxm+F/VO7Y/eKdOLii+vVjRMdMHjAOOI2rYbVK4/mgsRTTsvDjlei4uj2hjbOXIvsNbtVNblihqcUGqjZixdeHjxiGjuB9wcow1NYLXhgvZtJSd+u+ULnNWEAYnMabOoc7rX5sLgbkMcoK64nwzMu6At9FKtPHGVy3nzvNIyp9grYByeZ+iVQmjKxZzfuWLSIqJrJXRalmtneny5xWo4QS8oMOGf4nX8B+hbFOcdK3tT3ubcFyHvghZZcyYpsZK08qa3Q871QX+IqNkne5OBxJq04q4Fytof+rtbZrW/EeP/IA+IXWeWRw3vD0srp/4t31M+4EB34yZCwrMs8VV2dM9a4bnUbePxfjkiBKVMyuITnVbAiiaySG76lVss9JRASkidvS/qdpoC3fAUC3Xtq8q2xfgFrnhZ1uFCmk2ZKz/mYFQzW6O5gtZgIdm5+aFOR2K5Z1EACeZU9MgjFWrnRUcQErfsu5kC2srckIT822GzFrQfbMYyT4iENsDitKuJxiytnx5VRsbzNcIACHL7FBf7rP76HAaY6w4pUzkUWfpW+Yz20NEhuhIyjXj7l/dCYIIL6W+kdHqevC9nNFBy/8e88BSqFSBIugIcsFSXsy3pPP7J0uCKWAcDGpwTqlprzjam+Q== root@bastion.okd4.kcb.home'
+pullSecret: '{"auths":{"bastion.okd4.sye.home:5000":{"auth":"YWRtaW46b3Blbm5hcnU="}}}'
+sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC7fMzq373af+k12wxfCtC1B7Ddc/0rU+ddWTHFSxm+F/VO7Y/eKdOLii+vVjRMdMHjAOOI2rYbVK4/mgsRTTsvDjlei4uj2hjbOXIvsNbtVNblihqcUGqjZixdeHjxiGjuB9wcow1NYLXhgvZtJSd+u+ULnNWEAYnMabOoc7rX5sLgbkMcoK64nwzMu6At9FKtPHGVy3nzvNIyp9grYByeZ+iVQmjKxZzfuWLSIqJrJXRalmtneny5xWo4QS8oMOGf4nX8B+hbFOcdK3tT3ubcFyHvghZZcyYpsZK08qa3Q871QX+IqNkne5OBxJq04q4Fytof+rtbZrW/EeP/IA+IXWeWRw3vD0srp/4t31M+4EB34yZCwrMs8VV2dM9a4bnUbePxfjkiBKVMyuITnVbAiiaySG76lVss9JRASkidvS/qdpoC3fAUC3Xtq8q2xfgFrnhZ1uFCmk2ZKz/mYFQzW6O5gtZgIdm5+aFOR2K5Z1EACeZU9MgjFWrnRUcQErfsu5kC2srckIT822GzFrQfbMYyT4iENsDitKuJxiytnx5VRsbzNcIACHL7FBf7rP76HAaY6w4pUzkUWfpW+Yz20NEhuhIyjXj7l/dCYIIL6W+kdHqevC9nNFBy/8e88BSqFSBIugIcsFSXsy3pPP7J0uCKWAcDGpwTqlprzjam+Q== root@bastion.okd4.sye.home'
 additionalTrustBundle: |
   -----BEGIN CERTIFICATE-----
   MIIGNTCCBB2gAwIBAgIUBbvpZUjMi8f7XW3LcwCIX86z/zgwDQYJKoZIhvcNAQEL
@@ -61,8 +61,8 @@ additionalTrustBundle: |
   -----END CERTIFICATE-----
 imageContentSources:
 - mirrors:
-  - bastion.okd4.kcb.home:5000/okd4/release
+  - bastion.okd4.sye.home:5000/okd4/release
   source: quay.io/openshift/okd
 - mirrors:
-  - bastion.okd4.kcb.home:5000/okd4/release
+  - bastion.okd4.sye.home:5000/okd4/release
   source: quay.io/openshift/okd-content
