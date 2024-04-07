@@ -4,3 +4,5 @@
 oc/*okd*/
 oc/install_dir/
 oc/*output*
+oc/*.iso
+oc/pull-secret-private.json

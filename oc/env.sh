@@ -4,7 +4,8 @@
 # WORKING Directory
 WORKDIR=$(pwd)
 # OCP Release
-OCP_RELEASE=4.12.0-0.okd-2023-04-16-041331
+OCP_RELEASE=4.11.0-0.okd-2023-01-14-152430
+#OCP_RELEASE=4.12.0-0.okd-2023-04-16-041331
 # local container registry
 LOCAL_REGISTRY='bastion.okd4.kcb.home:5000'
 # local repository for OCP Cluster Operator container image
@@ -12,7 +13,7 @@ LOCAL_REPOSITORY='okd4/release'
 # Product repository
 PRODUCT_REPO='openshift'
 # local and ocp mirror registry pull secret
-LOCAL_SECRET_JSON='/root/test/oc/pull-secret-private.json'
+LOCAL_SECRET_JSON='./pull-secret-private.json'
 # release name
 RELEASE_NAME="okd"
 # architecture

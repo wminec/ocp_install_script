@@ -2,6 +2,14 @@
 
 . env.sh
 
+if [ -d install_dir ]; then
+
+        echo "install_dir is exists. delete this directory.."
+        rm -rf install_dir
+fi
+
+
+
 # check oc command is exist
 if command -v oc >/dev/null 2>&1; then
         echo "oc command is exists."
@@ -12,8 +20,20 @@ fi
 
 # Create install-config.yaml
 
-cp template/install-config.yaml_ori ./install-config.yaml
+if [ ! -f install-config.yaml ]; then
+        echo "install-config not found.."
+        cp template/install-config.yaml_ori ./install-config.yaml
+        echo "you must modify install-config.yaml"
+        echo "retry this script!!!"
 
-mkdir install_dir
+	exit 1
+fi
 
-echo "you must modify install-config.yaml and copy to install_dir"
+if [ ! -d install_dir ]; then
+        mkdir install_dir
+fi
+
+cp -v install-config.yaml install_dir/
+
+
+openshift-install create manifests --dir=$WORKDIR/install_dir/
