@@ -43,4 +43,5 @@ cp -av $WORKDIR/$OCP_RELEASE/oc $WORKDIR/$OCP_RELEASE/openshift-install $WORKDIR
 
 
 # butane
-curl https://mirror.openshift.com/pub/openshift-v4/clients/butane/latest/butane --output butane
+wget https://mirror.openshift.com/pub/openshift-v4/clients/butane/latest/butane -O $WORKDIR/$OCP_RELEASE/butane
+chmod u+x $WORKDIR/$OCP_RELEASE/butane

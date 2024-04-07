@@ -11,9 +11,15 @@ else
 fi
 
 # Create install-config.yaml
+files=( template/*.bu )
 
-cp template/install-config.yaml_ori ./install-config.yaml
+# 배열 순회하며 파일 확장자 변경 및 변환
+for file in "${files[@]}"
+do
+  new_file="${file//template/install_dir\/openshift}"
+  new_file="${new_file%.*}.yaml"
+  echo $new_file
+  $OCP_RELEASE/butane "$file" -o "$new_file"
+done
 
-
-
-echo "you must modify install-config.yaml"
+cp -v template/*.yaml install_dir/openshift/

@@ -19,13 +19,13 @@ SRC_REGISTRY_PORT=5000
 ## Bastion IP
 BA_IP=192.168.70.12
 ## Bootstrap Node IP
-BS_IP=192.168.70.52
+BS_IP=.10.10.70.126
 ## Master Node IPs
-M_IP=(192.168.70.51)
+M_IP=(10.10.70.121 10.10.70.122 10.10.70.123)
 ## Worker Node IPs
-W_IP=(192.168.70.51)
+W_IP=(10.10.70.124 10.10.70.125)
 ## SNO installation?
-SNO=true
+SNO=false
 
 # Environment for haproxy
 ## Haproxy config file name
@@ -47,6 +47,6 @@ forward_zonename=okd4.sye.home
 ## DNS Forwarder zone file name
 forward_filename=/var/named/$forward_zonename.zone
 ## DNS Reverse zone name
-rev_zonename=70.168.192.in-addr.arpa
+rev_zonename=70.10.10.in-addr.arpa
 ## DNS Reverse zone file name
 rev_filename=/var/named/$rev_zonename.zone

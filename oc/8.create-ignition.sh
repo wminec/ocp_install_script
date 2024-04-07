@@ -10,10 +10,11 @@ else
         exit 1
 fi
 
-# Create install-config.yaml
+# Create ignistion
 
-cp template/install-config.yaml_ori ./install-config.yaml
+openshift-install create ignition-configs --dir=$WORKDIR/install_dir/
+
+cp -v $WORKDIR/install_dir/*.ign /var/www/html/
+chown apache. -R /var/www/html
 
 
-
-echo "you must modify install-config.yaml"
