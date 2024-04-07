@@ -10,12 +10,17 @@ else
         exit 1
 fi
 
+if ! rpm -q httpd &>/dev/null; then
+    echo "httpd is not installed. you need to install httpd!"
+    exit 2
+fi
+
 openshift-install create manifests --dir=$WORKDIR/install_dir/
 
 # Create install-config.yaml
 files=( template/*.bu )
 
-# 배열 순회하며 파일 확장자 변경 및 변환
+# Rename and convert file extensions while iterating through an array
 # template/*.bu -> template/*.yaml use butane command
 for file in "${files[@]}"
 do
