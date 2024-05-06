@@ -41,9 +41,9 @@ add_servers_to_backend() {
     fi
     for ((i=0; i<${#ip_array[@]}; i++)); do
         if [[ $backend_name == *"ingress"* ]]; then
-            echo "    server worker$((i+1)) ${ip_array[$i]}:$port check"
+            echo "    server worker$((i+1)) ${ip_array[$i]}:$port check inter 1s"
         else
-            echo "    server master$((i+1)) ${ip_array[$i]}:$port check"
+            echo "    server master$((i+1)) ${ip_array[$i]}:$port check inter 1s"
         fi
     done
 
