@@ -9,7 +9,7 @@ cp -av "$dns_rfc1912_zone_filename" "${dns_rfc1912_zone_filename}_$(date +"%Y%m%
 # config named.conf
 echo "Bind IP and allow quary to any."
 sed -i 's/listen-on port 53 { 127.0.0.1; };/listen-on port 53 { any; };/g' $dns_conf_filename
-sed -i 's/allow-query     { lo¤¸calhost; };/allow-query     { any; };/g' $dns_conf_filename
+sed -i 's/allow-query     { localhost; };/allow-query     { any; };/g' $dns_conf_filename
 
 
 if ! grep -qw "forwarders" "$dns_conf_filename" && grep -q "$upstream" "$dns_conf_filename"; then
