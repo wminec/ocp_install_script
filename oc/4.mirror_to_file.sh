@@ -10,37 +10,29 @@ else
 	exit 1
 fi
 
-if [ ! -f pull-secret-private.json ]; then
-        echo "pullsecret not found.."
-        podman login -u ${SRC_REGISTRY_ID} -p ${SRC_REGISTRY_PASS} ${SRC_REGISTRY}:${SRC_REGISTRY_PORT}
-        cat /run/user/$(id -u)/containers/auth.json |jq -c > pull-secret-private.json
+if [ ! -f redhat-pullsecret.json ]; then
+        echo "redhat-pullsecret.json not found.."
+
+	exit 1
 fi
+
+yes|cp redhat-pullsecret.json /run/user/$(id -u)/containers/auth.json
+
+podman login -u ${SRC_REGISTRY_ID} -p ${SRC_REGISTRY_PASS} ${SRC_REGISTRY}:${SRC_REGISTRY_PORT}
+
+mkdir ~/.docker
+cp /run/user/$(id -u)/containers/auth.json ~/.docker/config.json
+
+cat /run/user/$(id -u)/containers/auth.json |jq -c > pull-secret-private.json
+
 
 # if OCP
 if [ "$RELEASE_NAME" == "ocp-release" ]; then
-	# get manifest
-	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
-        	--from=quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE}-${ARCHITECTURE} \
-        	--to=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY} \
-        	--to-release-image=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY}:${OCP_RELEASE}-${ARCHITECTURE} \
-        	--dry-run 2>&1 | tee mirror-dryrun-output_${OCP_RELEASE}.txt
 
-	# mirror to file
-	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
-        	--to-dir=${REMOVABLE_MEDIA_PATH}/mirror \
-        	quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE}-${ARCHITECTURE} 2>&1 | tee mirror-to-file-output_${OCP_RELEASE}.txt
+	oc-mirror --config=./mirror-config.yaml file://mirror
 
 # if okd	
 elif [ "$RELEASE_NAME" == "okd" ]; then 
-	# get manifests
-	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
-		--from=quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE} \
-		--to=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY} \
-		--to-release-image=${LOCAL_REGISTRY}/${LOCAL_REPOSITORY}:${OCP_RELEASE} \
-		--dry-run 2>&1 | tee mirror-dryrun-output_${OCP_RELEASE}.txt
-	
-	# mirror OCP container image to file
-	oc adm release mirror -a ${LOCAL_SECRET_JSON} \
-		--to-dir=${REMOVABLE_MEDIA_PATH}/mirror \
-		quay.io/${PRODUCT_REPO}/${RELEASE_NAME}:${OCP_RELEASE} 2>&1 | tee mirror-to-file-output_${OCP_RELEASE}.txt
+
+	oc-mirror --config=./mirror-config.yaml file://mirror
 fi

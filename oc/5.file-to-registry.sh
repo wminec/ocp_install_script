@@ -19,6 +19,11 @@ if [ ! -f pull-secret-private.json ]; then
 fi
 
 # Push OCP Cluster Operator Container Image to Registry
-oc image mirror -a ${LOCAL_SECRET_JSON} \
-	--from-dir=${REMOVABLE_MEDIA_PATH}/mirror "file://openshift/release:${OCP_RELEASE}*" \
-	${LOCAL_REGISTRY}/${LOCAL_REPOSITORY} 2>&1 | tee file-to-registry-output_${OCP_RELEASE}.txt
+
+echo "CHANGEME"
+# oc-mirror --from mirror_seq1_000000.tar docker://container-registry.kcbcore.com:5000/okd4
+
+
+#oc-mirror list operators --catalog=registry.redhat.io/redhat/redhat-operator-index:v4.14
+
+echo "CHANGEME"
